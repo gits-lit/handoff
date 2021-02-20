@@ -1,11 +1,24 @@
-import { Editor, Frame, Element } from '@craftjs/core';
 import React from 'react';
+import { Editor, Frame, Element } from '@craftjs/core';
+import { useEditor } from '@craftjs/core';
 
 import {Topbar} from '../Topbar';
+import { StateSaver } from '../StateSaver';
+
 import { Container } from '../subcomponents/Container';
-import {Text} from '../subcomponents/Text';
+import { Text } from '../subcomponents/Text';
 
 const HomePage = () => {
+  //const { allDescendants } = useEditor((state, query) => {
+    //const selectedNodeId = state.events.selected;
+    //let allDescendants = false;
+
+    //if (selectedNodeId)  allDescendants = query.node(selectedNodeId).decendants();  
+    //console.log(allDescendants);
+
+    //return { allDescendants }
+  //}); 
+
   return (
     <div>
       <Editor
@@ -26,6 +39,7 @@ const HomePage = () => {
           </Element>
         </Frame>
         <Topbar />
+        <StateSaver />
       </Editor>
     </div>
   );
