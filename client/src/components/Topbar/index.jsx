@@ -7,6 +7,7 @@ import './style.scss';
 import { Container } from '../subcomponents/Container';
 import { Text } from '../subcomponents/Text';
 import { Button } from '../subcomponents/Button';
+import { Image } from '../subcomponents/Image';
 
 export const Topbar = () => {
   const { connectors } = useEditor();
@@ -30,6 +31,12 @@ export const Topbar = () => {
         variant="contained"
       >
         Container
+      </button>
+      <button
+        ref={(ref) => connectors.create(ref, <Image />)}
+        variant="contained"
+      >
+        Image
       </button>
     </div>
   );
