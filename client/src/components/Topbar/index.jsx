@@ -1,10 +1,10 @@
 import { useEditor, Element } from '@craftjs/core';
-import {
-  Button as MaterialButton,
-} from '@material-ui/core';
 import React from 'react';
 
 import './style.scss';
+
+// All available components
+import { Container } from '../subcomponents/Container';
 import { Text } from '../subcomponents/Text';
 
 export const Topbar = () => {
@@ -12,12 +12,18 @@ export const Topbar = () => {
 
   return (
     <div className="top-bar">
-      <MaterialButton
-        ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
+      <button
+        ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
         variant="contained"
       >
         Text
-      </MaterialButton>
+      </button>
+      <button
+        ref={(ref) => connectors.create(ref, <Element canvas is={Container} padding={20} />)}
+        variant="contained"
+      >
+        Container
+      </button>
     </div>
   );
 };
