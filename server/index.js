@@ -13,6 +13,7 @@ io.on('connection', client => {
         client.broadcast.emit('mousemove', data);
     });
 
+    client.on('edit', data => client.broadcast.emit('edit', data));
     client.on('disconnect', () => client.broadcast.emit('disconnect', id));
     client.broadcast.emit('connect', id);
 });
