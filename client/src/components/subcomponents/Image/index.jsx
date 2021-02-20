@@ -13,7 +13,7 @@ export const Image = ({ imageLink }) => {
             <img
                 src={imageLink}
                 alt="your image"
-                opts={{
+                style={{
                     width: '50%',
                     height: '50%'
                 }}
