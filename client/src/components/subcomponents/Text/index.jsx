@@ -29,7 +29,7 @@ export const Text = ({ text, fontSize, textAlign }) => {
       onClick={() => selected && setEditable(true)}
     >
       <ContentEditable
-        html={'test'}
+        html={text}
         disabled={!editable}
         onChange={(e) =>
           setProp(
