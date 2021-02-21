@@ -61,17 +61,14 @@ const DropdownSettings = () => {
         <TextField
           onChange={(e) => setProp((props) => (props.text = e.target.value))}
         />
-        <br />
         <FormLabel component="legend">Option 1</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option1 = e.target.value))}
         />
-        <br />
         <FormLabel component="legend">Option 2</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option2 = e.target.value))}
         />
-        <br />
         <FormLabel component="legend">Option 3</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option3 = e.target.value))}
