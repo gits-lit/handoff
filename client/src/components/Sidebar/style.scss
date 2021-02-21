@@ -1,10 +1,7 @@
 .side-bar {
   background-color: white;
-  height: 50vh;
+  height: 86vh;
   width: 30vw;
-  position: fixed;
-  top: 20vh;
-  left: 0;
 
   .components-menu {
     display: flex;
@@ -15,8 +12,8 @@
       padding: 2vh 1vw;
       margin: 1vw;
       border: 1px dashed #000;
-      width: 5.5vw;
-      height: 5.5vw;
+      width: 100px;
+      height: 100px;
     }
   }
 }

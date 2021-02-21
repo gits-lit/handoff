@@ -5,6 +5,7 @@ import './style.scss';
 import brimg from '../../assets/br-img.svg';
 import blimg from '../../assets/bl-img.svg';
 import trimg from '../../assets/tr-img.svg';
+import trimg2 from '../../assets/tr-img2.svg';
 import tlimg from '../../assets/tl-img.svg';
 import logo from '../../assets/logo.svg';
 import revol from '../../assets/revol.svg';
@@ -40,6 +41,7 @@ export const LandingPage = () => {
       <img src={brimg} alt="illustration" className="brimg" />
       <img src={blimg} alt="illustration" className="blimg" />
       <img src={trimg} alt="illustration" className="trimg" />
+      <img src={trimg2} alt="illustration" className="trimg2" />
       <img src={tlimg} alt="illustration" className="tlimg" />
     </div>
   );

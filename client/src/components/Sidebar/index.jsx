@@ -24,36 +24,51 @@ export const Sidebar = () => {
   };
 
   const renderComponents = () => {
-    switch(current) {
+    switch (current) {
       case 'general':
         return (
           <div className="components-menu">
-            <button className="component-btn"
+            <button
+              className="component-btn"
               ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
               variant="contained"
             >
-              Text<br />
+              Text
+              <br />
               <PlusOutlined />
             </button>
-            <button className="component-btn"
-              ref={(ref) => connectors.create(ref, <Button text="Click me" size="small" />)}
+            <button
+              className="component-btn"
+              ref={(ref) =>
+                connectors.create(ref, <Button text="Click me" size="small" />)
+              }
               variant="contained"
             >
-              Button<br />
+              Button
+              <br />
               <PlusOutlined />
             </button>
-            <button className="component-btn"
-              ref={(ref) => connectors.create(ref, <Element canvas is={Container} padding={20} />)}
+            <button
+              className="component-btn"
+              ref={(ref) =>
+                connectors.create(
+                  ref,
+                  <Element canvas is={Container} padding={20} />
+                )
+              }
               variant="contained"
             >
-              Container<br />
+              Container
+              <br />
               <PlusOutlined />
             </button>
-            <button className="component-btn"
+            <button
+              className="component-btn"
               ref={(ref) => connectors.create(ref, <Image />)}
               variant="contained"
             >
-              Image<br />
+              Image
+              <br />
               <PlusOutlined />
             </button>
             <button className="component-btn"
@@ -68,11 +83,18 @@ export const Sidebar = () => {
       case 'form':
         return (
           <div className="components-menu">
-            <button className="component-btn"
-              ref={(ref) => connectors.create(ref, <Element canvas is={Container} padding={20} />)}
+            <button
+              className="component-btn"
+              ref={(ref) =>
+                connectors.create(
+                  ref,
+                  <Element canvas is={Container} padding={20} />
+                )
+              }
               variant="contained"
             >
-              Container<br />
+              Container
+              <br />
               <PlusOutlined />
             </button>
             <button className="component-btn"
@@ -87,11 +109,15 @@ export const Sidebar = () => {
       case 'buttons':
         return (
           <div className="components-menu">
-            <button className="component-btn"
-              ref={(ref) => connectors.create(ref, <Button text="Click me" size="small" />)}
+            <button
+              className="component-btn"
+              ref={(ref) =>
+                connectors.create(ref, <Button text="Click me" size="small" />)
+              }
               variant="contained"
             >
-              Button<br />
+              Button
+              <br />
               <PlusOutlined />
             </button>
           </div>

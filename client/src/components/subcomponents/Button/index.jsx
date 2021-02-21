@@ -99,7 +99,7 @@ export const ButtonSettings = () => {
                         control={<Radio size="small" color="primary" />}
                     />
                     <FormControlLabel
-                        label="Seconday"
+                        label="Secondary"
                         value="secondary"
                         control={<Radio size="small" color="primary" />}
                     />
