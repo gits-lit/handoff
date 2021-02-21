@@ -87,7 +87,7 @@ const HomePage = () => {
             right='5%'
             bottom='0'
             minHeight="calc(100vh - 150px)"
-            padding={0}
+            padding={20}
             background="rgba(255, 255, 255, 1)"
             id="main-canvas"
             >
