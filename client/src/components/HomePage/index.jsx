@@ -13,6 +13,7 @@ import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
 import { InputField } from '../subcomponents/InputField';
 import { Dropdown } from '../subcomponents/Dropdown';
+import { RadioOption } from '../subcomponents/RadioOption';
 
 import './style.scss';
 
@@ -76,7 +77,8 @@ const HomePage = () => {
           Image,
           InputField,
           Text,
-          Dropdown
+          Dropdown,
+          RadioOption
         }}
       >
         <Header base64={baseString} />

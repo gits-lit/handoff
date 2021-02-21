@@ -14,6 +14,7 @@ import { Button } from '../subcomponents/Button';
 import { Image } from '../subcomponents/Image';
 import { InputField } from '../subcomponents/InputField';
 import { Dropdown } from '../subcomponents/Dropdown';
+import { RadioOption } from '../subcomponents/RadioOption';
 
 export const Sidebar = () => {
   const { connectors } = useEditor();
@@ -86,6 +87,13 @@ export const Sidebar = () => {
               Dropdown<br />
               <PlusOutlined />
             </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <RadioOption text="Radio" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Radio<br />
+              <PlusOutlined />
+            </button>
           </div>
         );
       case 'form':
@@ -117,6 +125,13 @@ export const Sidebar = () => {
               variant="contained"
             >
               Dropdown<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <RadioOption text="Radio" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Radio<br />
               <PlusOutlined />
             </button>
           </div>

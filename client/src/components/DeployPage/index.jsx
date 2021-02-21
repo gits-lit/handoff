@@ -9,6 +9,7 @@ import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
 import { InputField } from '../subcomponents/InputField';
 import { Dropdown } from '../subcomponents/Dropdown';
+import { RadioOption } from '../subcomponents/RadioOption';
 import './style.scss';
 
 
@@ -45,7 +46,8 @@ const DeployPage = (props) => {
       Image,
       InputField,
       Text,
-      Dropdown
+      Dropdown,
+      RadioOption
     }}
   >
     <Frame>
