@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
 import socketIOClient from "socket.io-client";
 
+import Header from '../Header';
 import {Sidebar} from '../Sidebar';
-import { Header } from '../Header';
+import { Topbar } from '../Topbar';
 import Cursor from '../Cursor';
 
 
@@ -21,6 +22,7 @@ let prevMouseX, prevMouseY, x, y;
 
 const HomePage = () => {
   const [cursors, setCursors] = useState({});
+  const [baseString, updateBase] = useState('');
 
   useEffect(() => {
     // Update mouse move
@@ -78,17 +80,20 @@ const HomePage = () => {
           <Element
             canvas
             is={Container}
-            width="40%"
-            minHeight="800px"
-            padding={['40', '40', '40', '40']}
+            width="60vw"
+            position="absolute"
+            right='5%'
+            bottom='0'
+            minHeight="calc(100vh - 150px)"
+            padding={0}
             background="rgba(255, 255, 255, 1)"
-
+            id="main-canvas"
             >
-            <Text fontSize={20} text="Drag components onto the canvas to build your site" />
           </Element>
         </Frame>
         <Sidebar />
-        <Header socket={socket} />
+        <Header base64={baseString}/>
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} />
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #2C2C2C;
+  width: 100vw;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .logo {
+    margin-left: 20px;
+    height: 50px;
+  }
+
+  .side-header {
+    position: absolute;
+    right: 50px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+
+    .link {
+      margin-top: 5px;
+      cursor: url('../../assets/cursorbig.svg'), pointer;
+      color: white;
+      margin-right: 50px;
+    }
+
+    .deploy {
+      cursor: url('../../assets/cursorbig.svg'), pointer;
+      color: white;
+      background-color: #1376EA;
+      border-radius: 30px;
+      height: 45px;
+      margin-top: 5px;
+      font-weight: 500;
+      padding: 0 50px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

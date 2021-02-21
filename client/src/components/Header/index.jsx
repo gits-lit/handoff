@@ -1,44 +1,29 @@
-import { useState, useEffect } from 'react';
-import { useEditor } from '@craftjs/core';
-import lz from 'lzutf8';
+import { Link } from "react-router-dom";
 
-let actions = {};
+import './style.scss';
+import logo from '../../assets/logo.png';
 
-export const Header = (props) => {
-  const [encodedString, setEncodedString ] = useState('');
-
-  const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
-    (state, query) => {
-      const json = query.serialize();
-      const newEncodedString = lz.encodeBase64(lz.compress(json));
-      if (encodedString != newEncodedString) {
-        if(encodedString != '') {
-          props.socket.emit('edit', newEncodedString);
-        }
-        setEncodedString(newEncodedString);
-      }
-      
-      return ({
-        selectedNodeId: state.events.selected,
-        enabled: state.options.enabled,
-        canUndo: query.history.canUndo(),
-        canRedo: query.history.canRedo(),
-      });
-    }
-  );
-  
-  useEffect(() => {
-    props.socket.on("edit-back", data => {
-      console.log('receiving back');
-      const json = lz.decompress(lz.decodeBase64(data));
-      if (Object.keys(json).length > 2) {
-        actions.deserialize(json);
-      }
-    });
-  }, [])
-
+const Header = (props) => {
   return (
-    <>
-    </>
+    <div className = "header">
+      <img className="logo" src={logo} />
+      <div className="side-header">
+        <div className="link">
+          View Files
+        </div>
+        <div className="link">
+          Copy Link
+        </div>
+        <Link to={{
+          pathname: "/l",
+          search: `${props.base64}`}}s>
+          <div className="deploy">
+            Deploy
+          </div>
+        </Link>
+      </div>
+    </div>
   )
 }
+
+export default Header;
