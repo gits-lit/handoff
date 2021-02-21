@@ -35,7 +35,7 @@ io.on('connection', client => {
 
     client.on('mousemove', data => {
         data.id = id;
-        data.number = listOfClients[id]
+        data.number = listOfClients[id];
         client.broadcast.emit('mousemove', data);
     });
 
@@ -48,25 +48,21 @@ io.on('connection', client => {
         } else {
             number++;
             console.log(listOfClients);
-            if ( Object.keys(listOfClients).length == 0 ) {
+            if ( Object.keys(listOfClients).length === 0 )
                 cachedData = '';
-            }
-            else {
+            else
                 client.emit('edit-back', cachedData);
-            }
+
             listOfClients[id] = number;
         }
     });
 
-    client.on('lock', data => {
-        client.broadcast.emit('lock', data);
-    });
-
+    client.on('lock', data => client.broadcast.emit('lock', data));
     client.on('disconnect', () => {
         delete listOfClients[id];
         client.broadcast.emit('disconnected', id)
     });
-    client.broadcast.emit('connected', id);
 
+    client.broadcast.emit('connected', id);
     console.log(`Client [${id}] has connected.`);
 });
