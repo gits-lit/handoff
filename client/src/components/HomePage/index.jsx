@@ -12,6 +12,9 @@ import { Button } from '../subcomponents/Button';
 import { Container } from '../subcomponents/Container';
 import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
+import { Dropdown } from '../subcomponents/Dropdown';
+import { InputField } from '../subcomponents/InputField';
+import { RadioOption} from '../subcomponents/RadioOption';
 
 import './style.scss';
 
@@ -76,6 +79,9 @@ const HomePage = () => {
           Container,
           Image,
           Text,
+          Dropdown,
+          RadioOption,
+          InputField
         }}
       >
         <Frame>

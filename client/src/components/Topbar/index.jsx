@@ -85,11 +85,14 @@ export const Topbar = (props) => {
 
   useEffect(() => {
     props.socket.on("edit-back", data => {
+      console.log('edited');
+      if (data != encodedString) {
       props.updateBase64(data);
       const json = lz.decompress(lz.decodeBase64(data));
       if (Object.keys(json).length > 2) {
         actions.deserialize(json);
       }
+    }
     });
 
     props.socket.on('lock', (data) => {

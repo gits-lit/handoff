@@ -45,6 +45,9 @@ export const ContainerSettings = () => {
         <FormLabel component="legend">Padding</FormLabel>
         <Slider
           defaultValue={padding}
+          step={40}
+          min={0}
+          max={200}
           onChange={(value) =>
             setProp((props) => (props.padding = value), 500)
           }
