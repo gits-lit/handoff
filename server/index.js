@@ -29,6 +29,8 @@ const io = require('socket.io')(server, {
     }
 });
 
+let cachedData = '';
+let listOfClients = {};
 io.on('connection', client => {
     let id = client.id;
 
@@ -37,8 +39,30 @@ io.on('connection', client => {
         client.broadcast.emit('mousemove', data);
     });
 
-    client.on('edit', data => client.broadcast.emit('edit', data));
-    client.on('disconnected', () => client.broadcast.emit('disconnected', id));
+    client.on('edit', data => {
+        if (id in listOfClients) {
+            client.broadcast.emit('edit-back', data);
+            cachedData = data;
+        } else {
+            console.log(listOfClients);
+            if ( Object.keys(listOfClients).length == 0 ) {
+                cachedData = '';
+            }
+            else {
+                client.emit('edit-back', cachedData);
+            }
+            listOfClients[id] = '';
+        }
+    });
+
+    client.on('lock', data => {
+        client.broadcast.emit('lock', data);
+    });
+
+    client.on('disconnect', () => {
+        delete listOfClients[id];
+        client.broadcast.emit('disconnected', id)
+    });
     client.broadcast.emit('connected', id);
 
     console.log(`Client [${id}] has connected.`);

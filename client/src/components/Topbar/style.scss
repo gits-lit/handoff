@@ -1,7 +1,61 @@
 .top-bar {
-  background-color: #2C2C2C;
-  height: 10vh;
-  position: fixed;
-  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: #333333;
   width: 100vw;
+  position: fixed;
+  top: 75px;
+  height: 55px;
+
+  .team {
+    position: absolute;
+    right: 50px;
+  }
+
+  span {
+    color: white;
+    font-size: 20px;
+    margin: 0 20px;
+  }
+
+  .centered {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    background-color: #333333;
+    border: none;
+    z-index: -1;
+    color: white;
+    font-size: 20px;
+    &:focus {
+      outline: none
+    }
+
+  }
+
+  .ant-switch {
+    background-color: white;
+    cursor: url('../../assets/cursorbig.svg'), pointer;
+  }
+
+  .ant-switch-checked {
+    background-color: white;
+  }
+
+  .ant-switch-handle::before {
+    background-color: #333333 !important;
+  }
+
+  .mark {
+    cursor: url('../../assets/cursorbig.svg'), pointer;
+    margin: 0 10px 4px 20px;
+    z-index: 5;
+    transition: 0.2s;
+
+    &.disabled {
+      cursor: url('../../assets/cursor.svg'), pointer;
+      opacity: .5;
+    }
+  }
 }
