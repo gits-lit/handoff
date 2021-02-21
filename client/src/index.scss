@@ -1,8 +1,8 @@
 @import '~antd/dist/antd.css';
 
 body {
-  cursor: url("./assets/cursor.svg"), auto;
-  background-color: #E1E1E1;
+  cursor: url('./assets/cursor.svg'), auto;
+  background-color: #e1e1e1;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -30,6 +30,19 @@ code {
     monospace;
 }
 
+.mui-label {
+  margin-top: 12px;
+}
+
+.top-m {
+  .MuiFormControl-root {
+    margin-top: 24px;
+  }
+
+  .MuiFormLabel-root {
+    margin-bottom: 0px;
+  }
+}
 a {
   cursor: url("./assets/cursorbig.svg"), pointer;
 }

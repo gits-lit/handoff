@@ -39,7 +39,8 @@ function format(node, level) {
   return node;
 }
 
-
+let isClicked = false;
+let timeout = null;
 export const Topbar = (props) => {
 
   const [encodedString, setEncodedString] = useState('');
@@ -64,11 +65,47 @@ export const Topbar = (props) => {
     props.setCode(process(string));
   }
 
+  window.addEventListener('mousedown', e => {
+    isClicked = true;
+    console.log('mouse down');
+    if(timeout) {
+      clearTimeout(timeout);
+    }
+  });
+
+  window.addEventListener('keydown', e => {
+    isClicked = true;
+    if(timeout) {
+      clearTimeout(timeout);
+    }
+  });
+
+  window.addEventListener('keyup', e => {
+    isClicked = true;
+    if(timeout) {
+      clearTimeout(timeout);
+    }
+  }, 200);
+
+  
+
+  window.addEventListener('mouseup', e => {
+    if (isClicked ) {
+    timeout = setTimeout(() => {
+      isClicked = false;
+      console.log('mouse up');
+    }, 200);
+  }
+  });
+
   const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
     (state, query) => {
       const json = query.serialize();
       const newEncodedString = lz.encodeBase64(lz.compress(json));
-      if (encodedString != newEncodedString) {
+      console.log('editing2')
+      console.log(isClicked);
+      if (isClicked) {
+        console.log('editing')
         if(encodedString != '') {
           props.socket.emit('edit', newEncodedString);
           props.updateBase64(newEncodedString);
