@@ -5,6 +5,7 @@
   width: 100vw;
   height: 6vh;
   padding: 0px 1vw;
+  z-index: 10;
 
   .editing {
     display: flex;
@@ -36,7 +37,7 @@
   .ant-switch {
     background-color: white;
     cursor: url('../../assets/cursorbig.svg'), pointer;
-    z-index: 2;
+    z-index: 15;
   }
 
   .ant-switch-checked {

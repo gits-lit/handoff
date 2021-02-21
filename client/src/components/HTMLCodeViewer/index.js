@@ -45,6 +45,7 @@ class HtmlCodeViewer extends React.Component {
     this.str = this.str.replace('{','');
     this.str = this.str.replace('}','');
     this.str = this.str.replace('`','');
+    this.str = this.str.replace("`",'');
     console.log(this.str);
 
     let active = this.props.active;

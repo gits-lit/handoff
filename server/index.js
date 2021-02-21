@@ -39,8 +39,10 @@ io.on('connection', client => {
 
     client.on('edit', data => {
         if (id in listOfClients) {
-            client.broadcast.emit('edit-back', data);
-            cachedData = data;
+            if (data != cachedData) {
+                client.broadcast.emit('edit-back', data);
+                cachedData = data;
+            }
         } else {
             console.log(listOfClients);
             if ( Object.keys(listOfClients).length == 0 ) {
