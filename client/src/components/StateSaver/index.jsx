@@ -29,6 +29,7 @@ export const StateSaver = (props) => {
   
   useEffect(() => {
     props.socket.on("edit-back", data => {
+      console.log('receiving back');
       const json = lz.decompress(lz.decodeBase64(data));
       if (Object.keys(json).length > 2) {
         actions.deserialize(json);

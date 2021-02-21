@@ -83,7 +83,7 @@ const HomePage = () => {
             background="rgba(255, 255, 255, 1)"
 
             >
-            <Text fontSize={20} text="Hi world!" />
+            <Text fontSize={20} text="Drag components onto the canvas to build your site" />
           </Element>
         </Frame>
         <Topbar />

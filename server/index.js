@@ -33,9 +33,6 @@ let cachedData = '';
 let listOfClients = {};
 io.on('connection', client => {
     let id = client.id;
-    if (cachedData) {
-        client.emit('edit-back', cachedData);
-    }
 
     client.on('mousemove', data => {
         data.id = id;
@@ -47,10 +44,17 @@ io.on('connection', client => {
             client.broadcast.emit('edit-back', data);
             cachedData = data;
         } else {
+            console.log(listOfClients);
+            if ( Object.keys(listOfClients).length == 0 ) {
+                cachedData = '';
+            }
+            else {
+                client.emit('edit-back', cachedData);
+            }
             listOfClients[id] = '';
         }
     });
-    client.on('disconnected', () => {
+    client.on('disconnect', () => {
         delete listOfClients[id];
         client.broadcast.emit('disconnected', id)
     });
