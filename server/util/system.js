@@ -22,7 +22,7 @@ const api = {
                     file: result.val()
                 });
             else
-                return api.createError(`File ${name} does not exist.`);
+                return api.createError(`File "${name}" does not exist.`);
         } catch (e) {
             return api.createError(`Error when loading file: ${e.message}`);
         }
@@ -30,7 +30,7 @@ const api = {
     saveFile: async (name, string) => {
         // verify that there are no other files with the same name
         let data = await api.loadFile(name);
-        if (data.success) return api.createError(`File ${name} already exists.`);
+        if (data.success) return api.createError(`File "${name}" already exists.`);
 
         let ref = db.ref(`file/${name}`);
         try {
@@ -45,7 +45,7 @@ const api = {
         }
     },
     loadFiles: async () => {
-        let ref = db.ref('files');
+        let ref = db.ref('file');
         let result = await ref.once('value');
 
         if (result.exists()) {
