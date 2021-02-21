@@ -49,6 +49,7 @@ export const Settings = () => {
                     {selected.settings && React.createElement(selected.settings)}
                     {selected.isDeletable ? (
                         <MaterialButton
+                            stlye={{marginTop: '20px'}}
                             variant="contained"
                             color="default"
                             onClick={() => {
