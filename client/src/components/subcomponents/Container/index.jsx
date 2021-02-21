@@ -4,7 +4,7 @@ import { Paper, FormControl, FormLabel } from '@material-ui/core';
 import ColorPicker from 'material-ui-color-picker';
 import React from 'react';
 
-export const Container = ({ background, width, minHeight, padding, children, bottom, right, position, id }) => {
+export const Container = ({ background, width, minHeight, padding, children, top, right, position, id }) => {
   const {
     connectors: { connect, drag },
   } = useNode();
@@ -12,7 +12,7 @@ export const Container = ({ background, width, minHeight, padding, children, bot
     <Paper
       ref={(ref) => connect(drag(ref))}
       id={id}
-      style={{ margin: '5px 0', background, bottom, right, padding: `${padding}px`, position, minHeight, width }}
+      style={{ margin: '5px 0', background, top, right, padding: `${padding}px`, position, minHeight, width }}
       elevation={3}
     >
       {children}

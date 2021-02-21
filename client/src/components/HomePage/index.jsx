@@ -138,7 +138,7 @@ const HomePage = () => {
             width="60vw"
             position="absolute"
             right='5%'
-            bottom='0'
+            top='18vh'
             minHeight="calc(100vh - 150px)"
             padding={20}
             background="rgba(255, 255, 255, 1)"
