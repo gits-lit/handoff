@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 body {
   cursor: url("./assets/cursor.svg"), auto;
   background-color: #E1E1E1;
@@ -9,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   width: 100vw;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 button {
