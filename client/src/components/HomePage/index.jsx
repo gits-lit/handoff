@@ -12,6 +12,7 @@ import { Container } from '../subcomponents/Container';
 import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
 import { InputField } from '../subcomponents/InputField';
+import { Dropdown } from '../subcomponents/Dropdown';
 
 import './style.scss';
 
@@ -75,6 +76,7 @@ const HomePage = () => {
           Image,
           InputField,
           Text,
+          Dropdown
         }}
       >
         <Header base64={baseString} />

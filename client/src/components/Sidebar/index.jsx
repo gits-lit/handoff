@@ -13,6 +13,7 @@ import { Text } from '../subcomponents/Text';
 import { Button } from '../subcomponents/Button';
 import { Image } from '../subcomponents/Image';
 import { InputField } from '../subcomponents/InputField';
+import { Dropdown } from '../subcomponents/Dropdown';
 
 export const Sidebar = () => {
   const { connectors } = useEditor();
@@ -78,6 +79,13 @@ export const Sidebar = () => {
               Input Field<br />
               <PlusOutlined />
             </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <Dropdown text="Dropdown" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Dropdown<br />
+              <PlusOutlined />
+            </button>
           </div>
         );
       case 'form':
@@ -102,6 +110,13 @@ export const Sidebar = () => {
               variant="contained"
             >
               Input Field<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <Dropdown text="Dropdown" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Dropdown<br />
               <PlusOutlined />
             </button>
           </div>
