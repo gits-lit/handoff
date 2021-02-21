@@ -1,5 +1,5 @@
 import { useNode } from '@craftjs/core';
-import { Slider } from '@material-ui/core';
+import { Slider } from 'antd';
 import { Paper, FormControl, FormLabel } from '@material-ui/core';
 import ColorPicker from 'material-ui-color-picker';
 import React from 'react';
@@ -45,7 +45,7 @@ export const ContainerSettings = () => {
         <FormLabel component="legend">Padding</FormLabel>
         <Slider
           defaultValue={padding}
-          onChange={(_, value) =>
+          onChange={(value) =>
             setProp((props) => (props.padding = value), 500)
           }
         />

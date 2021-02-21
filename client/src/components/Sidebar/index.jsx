@@ -87,7 +87,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="top-bar">
+    <div className="side-bar">
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
         <Menu.Item key="general" icon={<CopyOutlined />}>
           General
