@@ -6,12 +6,15 @@ import {Topbar} from '../Topbar';
 import { StateSaver } from '../StateSaver';
 import Cursor from '../Cursor';
 
+import { Button } from '../subcomponents/Button';
 import { Container } from '../subcomponents/Container';
+import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
 
 import './style.scss';
 
 const ENDPOINT = "http://127.0.0.1:3000";
+const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
 
@@ -34,7 +37,6 @@ const HomePage = () => {
     });
 
     // Send mouse movement
-    const socket = socketIOClient(ENDPOINT);
     const intervalID = window.setInterval(function(){
       if (prevMouseX !== x || prevMouseY !== y) {
         prevMouseX = x;
@@ -59,6 +61,9 @@ const HomePage = () => {
     <div className="handoff-container">
       <Editor
         resolver={{
+          Button,
+          Container,
+          Image,
           Text,
         }}
       >
@@ -76,7 +81,7 @@ const HomePage = () => {
           </Element>
         </Frame>
         <Topbar />
-        <StateSaver />
+        <StateSaver socket={socket} />
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

@@ -1,29 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useEditor } from '@craftjs/core';
 import lz from 'lzutf8';
 
-export const StateSaver = () => {
+let actions = {};
+
+export const StateSaver = (props) => {
   const [encodedString, setEncodedString ] = useState('');
 
-  const { actions, query, enabled, canUndo, canRedo } = useEditor(
+  const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
     (state, query) => {
       const json = query.serialize();
-      console.log(json);
       const newEncodedString = lz.encodeBase64(lz.compress(json));
       if (encodedString != newEncodedString) {
+        if(encodedString != '') {
+          props.socket.emit('edit', newEncodedString);
+        }
         setEncodedString(newEncodedString);
-        console.log('there was a change, emit to socket.io here');
       }
       
       return ({
+        selectedNodeId: state.events.selected,
         enabled: state.options.enabled,
         canUndo: query.history.canUndo(),
         canRedo: query.history.canRedo(),
       });
     }
   );
+  
+  useEffect(() => {
+    props.socket.on("edit-back", data => {
+      const json = lz.decompress(lz.decodeBase64(data));
+      if (Object.keys(json).length > 2) {
+        actions.deserialize(json);
+      }
+    });
+  }, [])
 
   return (
-    <h1>hello world</h1>
+    <>
+    </>
   )
 }
