@@ -1,19 +1,22 @@
 .top-bar {
   background-color: white;
-  height: 100vh;
+  height: 50vh;
   width: 30vw;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  flex-wrap: wrap;
 
-  .component-btn {
-    background-color: white;
-    padding: 2vh 1vw;
-    margin: 1vw;
-    border: 1px dashed #000;
-    width: 5.5vw;
-    height: 5.5vw;
+  .components-menu {
+    display: flex;
+    flex-wrap: wrap;
+
+    .component-btn {
+      background-color: white;
+      padding: 2vh 1vw;
+      margin: 1vw;
+      border: 1px dashed #000;
+      width: 5.5vw;
+      height: 5.5vw;
+    }
   }
 }
