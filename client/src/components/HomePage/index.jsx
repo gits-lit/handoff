@@ -89,7 +89,7 @@ const HomePage = () => {
             <Element
               canvas
               is={Container}
-              width="67.5vw"
+              width="68vw"
               position="absolute"
               right="1vw"
               bottom="0"
