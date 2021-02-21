@@ -1,7 +1,6 @@
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #333333;
   width: 100vw;
   height: 6vh;
@@ -12,7 +11,7 @@
     align-items: center;
   }
 
-  h3 {
+  span {
     color: white;
     font-size: 20px;
     margin: 0 20px;
@@ -37,6 +36,7 @@
   .ant-switch {
     background-color: white;
     cursor: url('../../assets/cursorbig.svg'), pointer;
+    z-index: 2;
   }
 
   .ant-switch-checked {
@@ -57,6 +57,11 @@
       cursor: url('../../assets/cursor.svg'), pointer;
       opacity: .5;
     }
+  }
+
+  .team {
+    position: absolute;
+    right: 50px;
   }
 }
 
