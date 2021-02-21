@@ -18,7 +18,16 @@ import { RadioOption} from '../subcomponents/RadioOption';
 
 import './style.scss';
 
-const ENDPOINT = "http://127.0.0.1:3000";
+let ENDPOINT = "http://127.0.0.1:3000";
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  // dev code
+  ENDPOINT = "http://127.0.0.1:3000"
+} else {
+  // production code
+  ENDPOINT = "https://handoff-sc.herokuapp.com/" 
+}
+
+
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
