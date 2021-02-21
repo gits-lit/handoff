@@ -3,6 +3,7 @@ const colors = ['#FF0000', '#AD00FF', '#FFAA29']
 const Cursor = (props) => {
   return (
     <div 
+      key={props.x + props.y + props.mouse}
       className="cursor"
       style={{
       position: 'absolute',
