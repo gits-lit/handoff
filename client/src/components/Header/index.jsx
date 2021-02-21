@@ -18,7 +18,7 @@ const Header = (props) => {
           pathname: "/l",
           search: `${props.base64}`}}s>
           <div className="deploy">
-            Deploy
+            <h3>Deploy</h3>
           </div>
         </Link>
       </div>

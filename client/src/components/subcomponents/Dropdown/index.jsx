@@ -57,19 +57,19 @@ const DropdownSettings = () => {
   return (
     <>
       <FormControl size="large" component="fieldset">
-        <FormLabel component="legend">Label</FormLabel>
+        <FormLabel className="mui-label" component="legend">Label</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.text = e.target.value))}
         />
-        <FormLabel component="legend">Option 1</FormLabel>
+        <FormLabel className="mui-label" component="legend">Option 1</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option1 = e.target.value))}
         />
-        <FormLabel component="legend">Option 2</FormLabel>
+        <FormLabel className="mui-label" component="legend">Option 2</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option2 = e.target.value))}
         />
-        <FormLabel component="legend">Option 3</FormLabel>
+        <FormLabel className="mui-label" component="legend">Option 3</FormLabel>
         <TextField
           onChange={(e) => setProp((props) => (props.option3 = e.target.value))}
         />
