@@ -31,9 +31,9 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
+let cursors = {}
 
 const HomePage = () => {
-  const [cursors, setCursors] = useState({});
   const [baseString, updateBase] = useState('');
   const [codeSwitch, setCodeSwitch] = useState(false);
   const [code, setCode] = useState('');
@@ -70,13 +70,18 @@ const HomePage = () => {
         my: data.my,
         number: Object.keys(cursors).length + 1
       }
-      setCursors(newCursors);
+      console.log('mousemove');
+      console.log(cursors);
+      console.log(data.id);
+      cursors = newCursors;
+      console.log(newCursors);
     });
 
     socket.on("disconnect", (id) => {
+      console.log('disconnect');
       const newCursors = {...cursors};
       delete newCursors[id];
-      setCursors(newCursors);
+      cursors = newCursors;
     })
   }, []);
 
