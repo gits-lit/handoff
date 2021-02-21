@@ -3,10 +3,7 @@
   align-items: center;
   background-color: #2C2C2C;
   width: 100vw;
-  height: 75px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  height: 8vh;
 
   .logo {
     margin-left: 20px;
@@ -25,6 +22,7 @@
       cursor: url('../../assets/cursorbig.svg'), pointer;
       color: white;
       margin-right: 50px;
+      font-size: 18px;
     }
 
     .deploy {
