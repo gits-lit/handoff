@@ -6,6 +6,10 @@
   left: 0;
   bottom: 0;
 
+  .MuiSelect-selectMenu {
+    margin-top: 12px;
+  }
+
   .components-menu {
     display: flex;
     flex-wrap: wrap;
@@ -26,3 +30,4 @@
     }
   }
 }
+
