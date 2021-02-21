@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useEditor } from '@craftjs/core';
 import lz from 'lzutf8';
 import { Switch } from 'antd';
+import * as prettify from 'html-prettify';
 
 import teamicons from '../../assets/team-icons.png';
 import undo from '../../assets/undo.svg';
@@ -11,15 +12,54 @@ import './style.scss';
 
 let actions = {};
 
+function process(str) {
+  var div = document.createElement('div');
+  div.innerHTML = str.trim();
+
+  return format(div, 0).innerHTML;
+}
+
+function format(node, level) {
+  var indentBefore = new Array(level++ + 1).join('  '),
+    indentAfter = new Array(level - 1).join('  '),
+    textNode;
+
+  for (var i = 0; i < node.children.length; i++) {
+    textNode = document.createTextNode('\n' + indentBefore);
+    node.insertBefore(textNode, node.children[i]);
+
+    format(node.children[i], level);
+
+    if (node.lastElementChild == node.children[i]) {
+      textNode = document.createTextNode('\n' + indentAfter);
+      node.appendChild(textNode);
+    }
+  }
+
+  return node;
+}
+
+
 export const Topbar = (props) => {
   const [encodedString, setEncodedString ] = useState('');
   const [checked, setChecked] = useState(true);
+  const [view, setView] = useState(true);
   const [name, setName] = useState(props.name);
 
   const onLock = () =>{
     actions.setOptions((options) => (options.enabled = !checked));
     setChecked(!checked);
     props.socket.emit('lock', !checked);
+  }
+
+  const onView = () => {
+    var d = document.getElementById("main-canvas");
+    setView(!view);
+    props.setCodeSwitch(view);
+    console.log('CODED');
+    let string = prettify(d.outerHTML);
+    console.log(process(string));
+    props.setCode(process(string));
   }
 
   const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
@@ -45,11 +85,10 @@ export const Topbar = (props) => {
   
   useEffect(() => {
     props.socket.on("edit-back", data => {
-      console.log('receiving back');
+      props.updateBase64(data);
       const json = lz.decompress(lz.decodeBase64(data));
       if (Object.keys(json).length > 2) {
         actions.deserialize(json);
-        props.updateBase64(json);
       }
     });
 
@@ -64,10 +103,12 @@ export const Topbar = (props) => {
       <img className={canRedo ? 'mark' : 'mark disabled'} src={redo} onClick={() => actions.history.redo()}/>
       <img className='team' src={teamicons}/>
       <span>Lock Editing</span>
+      <Switch defaultChecked onChange={onLock} checked={checked} />
+      <span>Code View</span>
+      <Switch defaultChecked onChange={onView} checked={view} />
       <input className="centered" onChange={(e) => {
         setName(e.target.value);
       }} value={name}/>
-      <Switch defaultChecked onChange={onLock} checked={checked} />
     </div>
   )
 }

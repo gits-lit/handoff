@@ -6,6 +6,7 @@ import Header from '../Header';
 import {Sidebar} from '../Sidebar';
 import { Topbar } from '../Topbar';
 import Cursor from '../Cursor';
+import CodeViewer from '../CodeViewer';
 
 import { Button } from '../subcomponents/Button';
 import { Container } from '../subcomponents/Container';
@@ -22,6 +23,8 @@ let prevMouseX, prevMouseY, x, y;
 const HomePage = () => {
   const [cursors, setCursors] = useState({});
   const [baseString, updateBase] = useState('');
+  const [codeSwitch, setCodeSwitch] = useState(false);
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     // Update mouse move
@@ -90,9 +93,9 @@ const HomePage = () => {
             >
           </Element>
         </Frame>
-        <Sidebar />
+        {codeSwitch ? <CodeViewer html={code}/> : <Sidebar />}
         <Header base64={baseString}/>
-        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} />
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
       </Editor>
       {
         Object.values(cursors).map((cursor) => {
