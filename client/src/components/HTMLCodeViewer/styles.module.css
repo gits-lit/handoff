@@ -1,0 +1,195 @@
+@keyframes whiteToGray {
+  from {
+    background-color: none;
+  }
+  to {
+    background-color: #efefef;
+    color: #000;
+  }
+}
+
+@keyframes grayToBlue {
+  from {
+    background-color: #efefef;
+  }
+  to {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.htmlViewer *{
+  box-sizing: border-box;
+}
+.htmlViewer {
+  background-color: #fff;
+  border: 0.1px solid #bababa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow:hidden;
+  display:flex;
+  flex-direction: column;
+}
+
+.htmlViewer * {
+  box-sizing: border-box;
+}
+.htmlViewer .content {
+  height:100%;
+  padding: 0;
+  padding:1rem;
+}
+
+.htmlViewer .content pre {
+  height:100%;
+    overflow-y:auto;
+}
+
+.htmlViewer .content > * {
+  margin: 0;
+  padding: 1rem;
+}
+
+.htmlViewer .togglerContainer {
+  background-color: #fff;
+  display: flex;
+  flex-flow: row wrap;
+  border: 0.1px solid #bababa;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  justify-content: flex-end;
+}
+
+.htmlViewer .title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.htmlViewer .toggler {
+  border-radius: 0.25rem;
+  display: flex;
+}
+
+.htmlViewer .label {
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin: 0.2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.htmlViewer .label:hover {
+  animation-name: whiteToGray;
+  animation-direction: alternate;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.htmlViewer .content{
+  width:100%;
+  overflow:hidden;
+}
+
+.htmlViewer  .contentContainer {
+  position:relative;
+  margin-top: .5rem;
+  overflow:hidden;
+  display:block;
+}
+
+.htmlViewer .contentContainer.grid{
+  display:grid;
+  grid-template-columns: 49% 1% auto;
+  grid-template-rows: 1fr;
+  gap:1%;
+}
+
+.htmlViewer .contentContainer.block{
+    display:block;
+  }
+  
+.htmlViewer .dragbar {
+  background: #ababab;
+  height: 100%;
+  align-self: center;
+  justify-self: center;
+  width:1px;
+  font-size: x-large;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+
+.htmlViewer .resize{
+    cursor: col-resize;
+    background-color: #000;
+    color:#fff;
+    border-radius: 100%;
+    padding:.2rem;
+}
+
+@media (max-width: 540px) {
+  .htmlViewer .resize{
+    cursor: row-resize;
+}
+
+  .htmlViewer .dragbar {
+  background: #ababab;
+  align-self: center;
+  justify-self: center;
+    flex-direction:row;
+    width:100%;
+    height:1px;
+  font-size: x-large;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  .htmlViewer .togglerContainer {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .htmlViewer .title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  
+  .htmlViewer .contentContainer.grid{
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 49% 2% 49%;
+    grid-template-columns: 1fr;
+      gap:2%;
+  }
+  .htmlViewer   .contentContainer.block{
+    display:block;
+  }
+  
+.htmlViewer .dragbar {
+  background: #ababab;
+  align-self: center;
+  justify-self: center;
+    flex-direction:row;
+    width:100%;
+    height:1px;
+  font-size: x-large;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.htmlViewer .resize{
+    cursor: row-resize;
+}
+}

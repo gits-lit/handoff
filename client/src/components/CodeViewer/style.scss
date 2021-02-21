@@ -1,0 +1,24 @@
+#code-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#code-viewer-raw {
+  background-color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  margin-top: 150px;
+  overflow: none;
+
+  * {
+    background-color: white !important;
+  }
+}
+
+#code-viewer-togglerContainer {
+  display: none;
+}

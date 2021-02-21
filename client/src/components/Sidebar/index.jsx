@@ -12,6 +12,9 @@ import { Container } from '../subcomponents/Container';
 import { Text } from '../subcomponents/Text';
 import { Button } from '../subcomponents/Button';
 import { Image } from '../subcomponents/Image';
+import { InputField } from '../subcomponents/InputField';
+import { Dropdown } from '../subcomponents/Dropdown';
+import { RadioOption } from '../subcomponents/RadioOption';
 
 export const Sidebar = () => {
   const { connectors } = useEditor();
@@ -70,6 +73,27 @@ export const Sidebar = () => {
               <br />
               <PlusOutlined />
             </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <InputField text="Input" size="small" />)}
+              variant="contained"
+            >
+              Input Field<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <Dropdown text="Dropdown" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Dropdown<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <RadioOption text="Radio" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Radio<br />
+              <PlusOutlined />
+            </button>
           </div>
         );
       case 'form':
@@ -87,6 +111,27 @@ export const Sidebar = () => {
             >
               Container
               <br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <InputField text="Input" size="small" />)}
+              variant="contained"
+            >
+              Input Field<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <Dropdown text="Dropdown" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Dropdown<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <RadioOption text="Radio" option1="One" option2="Two" option3="Three" />)}
+              variant="contained"
+            >
+              Radio<br />
               <PlusOutlined />
             </button>
           </div>

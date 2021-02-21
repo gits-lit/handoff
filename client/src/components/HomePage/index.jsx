@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
-import socketIOClient from 'socket.io-client';
+import socketIOClient from "socket.io-client";
 
 import Header from '../Header';
-import { Sidebar } from '../Sidebar';
+import {Sidebar} from '../Sidebar';
 import { Topbar } from '../Topbar';
 import Cursor from '../Cursor';
+import CodeViewer from '../CodeViewer';
 
 import { Button } from '../subcomponents/Button';
 import { Container } from '../subcomponents/Container';
@@ -14,7 +15,7 @@ import { Text } from '../subcomponents/Text';
 
 import './style.scss';
 
-const ENDPOINT = 'http://127.0.0.1:3000';
+const ENDPOINT = "http://127.0.0.1:3000";
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
@@ -22,47 +23,49 @@ let prevMouseX, prevMouseY, x, y;
 const HomePage = () => {
   const [cursors, setCursors] = useState({});
   const [baseString, updateBase] = useState('');
+  const [codeSwitch, setCodeSwitch] = useState(false);
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     // Update mouse move
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', e => {
       x = e.pageX;
       y = e.pageY;
     });
-    document.addEventListener('drag', (e) => {
+    document.addEventListener('drag', e => {
       x = e.pageX;
       y = e.pageY;
     });
-    document.addEventListener('mouseleave', (e) => {
+    document.addEventListener('mouseleave', e => {
       x = 5000;
       y = 0;
     });
 
     // Send mouse movement
-    const intervalID = window.setInterval(function () {
+    const intervalID = window.setInterval(function(){
       if (prevMouseX !== x || prevMouseY !== y) {
         prevMouseX = x;
         prevMouseY = y;
-        socket.emit('mousemove', { mx: x, my: y });
+        socket.emit('mousemove', {mx : x, my : y});
       }
-    }, 20);
+   }, 20);
 
     // Handle another mouse movement
-    socket.on('mousemove', (data) => {
-      const newCursors = { ...cursors };
+    socket.on("mousemove", data => {
+      const newCursors = {...cursors};
       newCursors[data.id] = {
         mx: data.mx,
         my: data.my,
-        number: Object.keys(cursors).length + 1,
-      };
+        number: Object.keys(cursors).length + 1
+      }
       setCursors(newCursors);
     });
 
-    socket.on('disconnect', (id) => {
-      const newCursors = { ...cursors };
+    socket.on("disconnect", (id) => {
+      const newCursors = {...cursors};
       delete newCursors[id];
       setCursors(newCursors);
-    });
+    })
   }, []);
 
   return (
@@ -75,39 +78,34 @@ const HomePage = () => {
           Text,
         }}
       >
-        <Header base64={baseString} />
-        <Topbar
-          updateBase64={(baseString) => {
-            updateBase(baseString);
-          }}
-          name="HackSC2021 Demo"
-          socket={socket}
-        />
-        <div className="row">
-          <Sidebar />
-          <Frame>
-            <Element
-              canvas
-              is={Container}
-              width="67.5vw"
-              position="absolute"
-              right="1vw"
-              bottom="0"
-              minHeight="calc(100vh - 150px)"
-              padding={0}
-              background="rgba(255, 255, 255, 1)"
-              id="main-canvas"
-            ></Element>
-          </Frame>
-        </div>
+        <Frame>
+          <Element
+            canvas
+            is={Container}
+            width="60vw"
+            position="absolute"
+            right='5%'
+            bottom='0'
+            minHeight="calc(100vh - 150px)"
+            padding={0}
+            background="rgba(255, 255, 255, 1)"
+            id="main-canvas"
+            >
+          </Element>
+        </Frame>
+        {codeSwitch ? <CodeViewer html={code}/> : <Sidebar />}
+        <Header base64={baseString}/>
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
       </Editor>
-      {Object.values(cursors).map((cursor) => {
-        return (
-          <Cursor x={cursor.mx} y={cursor.my} number={cursor.number % 3} />
-        );
-      })}
+      {
+        Object.values(cursors).map((cursor) => {
+          return (
+            <Cursor x={cursor.mx} y={cursor.my} number={cursor.number % 3}/>
+          )
+        })
+      }
     </div>
   );
-};
+}
 
 export default HomePage;

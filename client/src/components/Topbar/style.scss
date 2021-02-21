@@ -1,7 +1,6 @@
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #333333;
   width: 100vw;
   height: 6vh;
@@ -12,13 +11,17 @@
     align-items: center;
   }
 
-  h3 {
+  span {
     color: white;
     font-size: 20px;
     margin: 0 20px;
   }
 
   .centered {
+    cursor: url('../../assets/cursorbig.svg'), pointer;
+    position: absolute;
+    width: calc(100% - 700px);
+    left: 500px;
     text-align: center;
     background-color: #333333;
     border: none;
@@ -33,6 +36,7 @@
   .ant-switch {
     background-color: white;
     cursor: url('../../assets/cursorbig.svg'), pointer;
+    z-index: 2;
   }
 
   .ant-switch-checked {
@@ -52,6 +56,26 @@
     &.disabled {
       cursor: url('../../assets/cursor.svg'), pointer;
       opacity: .5;
+    }
+  }
+
+  .team {
+    position: absolute;
+    right: 50px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .top-bar {
+    span {
+      display: none;
+    }
+    .centered {
+      display: none;
+    }
+    
+    .ant-switch {
+      margin-left: 20px;
     }
   }
 }
