@@ -1,10 +1,28 @@
 .settings-panel {
-    width: 100%;
-    .MuiButton-contained {
-        margin-top: 20px;
-    }
+  width: 100%;
 
-    .MuiSelect-selectMenu {
-        width: 200px !important;
-    }
+  .MuiButton-contained {
+    margin-top: 20px;
+  }
+
+  .MuiSelect-selectMenu {
+    width: 200px !important;
+  }
+
+  .MuiButton-contained {
+    background-color: #f01919;
+    color: white;
+  }
+
+  .MuiButton-contained:hover {
+    background-color: #f64848;
+  }
+}
+.gridline {
+  padding-bottom: 12px;
+  border-bottom: 1px #f0f0f0 solid;
+}
+
+.GapCloser {
+    margin-top: 10vh !important;
 }

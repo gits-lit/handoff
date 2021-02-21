@@ -16,7 +16,7 @@ export const Button = ({ size, variant, color, text }) => {
     return (
         <MaterialButton
             ref={(ref) => connect(drag(ref))}
-            style={{ margin: '5px' }}
+            style={{ margin: '15px 5px 5px 0px' }}
             size={size}
             variant={variant}
             color={color}

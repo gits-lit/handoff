@@ -24,5 +24,4 @@ router.get('/loadFile/', async (req, res) => {
 });
 
 router.get('/loadFiles/', async (req, res) => res.json(await f.loadFiles()));
-
 module.exports = router;
