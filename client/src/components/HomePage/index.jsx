@@ -53,6 +53,12 @@ const HomePage = () => {
       }
       setCursors(newCursors);
     });
+
+    socket.on("disconnect", (id) => {
+      const newCursors = {...cursors};
+      delete newCursors[id];
+      setCursors(newCursors);
+    })
   }, []);
 
   return (

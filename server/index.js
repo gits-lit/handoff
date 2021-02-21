@@ -29,16 +29,31 @@ const io = require('socket.io')(server, {
     }
 });
 
+let cachedData = '';
+let listOfClients = {};
 io.on('connection', client => {
     let id = client.id;
+    if (cachedData) {
+        client.emit('edit-back', cachedData);
+    }
 
     client.on('mousemove', data => {
         data.id = id;
         client.broadcast.emit('mousemove', data);
     });
 
-    client.on('edit', data => {client.broadcast.emit('edit-back', data)});
-    client.on('disconnected', () => client.broadcast.emit('disconnected', id));
+    client.on('edit', data => {
+        if (id in listOfClients) {
+            client.broadcast.emit('edit-back', data);
+            cachedData = data;
+        } else {
+            listOfClients[id] = '';
+        }
+    });
+    client.on('disconnected', () => {
+        delete listOfClients[id];
+        client.broadcast.emit('disconnected', id)
+    });
     client.broadcast.emit('connected', id);
 
     console.log(`Client [${id}] has connected.`);
