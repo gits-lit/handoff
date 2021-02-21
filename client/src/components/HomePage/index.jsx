@@ -19,11 +19,10 @@ const HomePage = () => {
   useEffect(() => {
     // Update mouse move
     document.addEventListener('mousemove', e => {
-      x = e.offsetX;
-      y = e.offsetY;
+      x = e.pageX;
+      y = e.pageY;
     });
     document.addEventListener('drag', e => {
-      console.log('test');
       x = e.pageX;
       y = e.pageY;
     });

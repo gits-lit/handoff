@@ -38,8 +38,8 @@ io.on('connection', client => {
     });
 
     client.on('edit', data => client.broadcast.emit('edit', data));
-    client.on('disconnect', () => client.broadcast.emit('disconnect', id));
-    client.broadcast.emit('connect', id);
+    client.on('disconnected', () => client.broadcast.emit('disconnected', id));
+    client.broadcast.emit('connected', id);
 
     console.log(`Client [${id}] has connected.`);
 });
