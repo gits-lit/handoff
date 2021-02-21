@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
 import socketIOClient from "socket.io-client";
 
@@ -27,16 +27,33 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   ENDPOINT = "https://handoff-sc.herokuapp.com/" 
 }
 
+const initialState = {cursors: {}};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'add':
+      return {cursors: {...state.cursors, ...action.payload}};
+    case 'update':
+      return {cursors: action.payload};
+    default:
+      throw new Error();
+  }
+}
 
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
-let cursors = {}
+let cursors2 = {}
+let number = 0;
 
 const HomePage = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [baseString, updateBase] = useState('');
   const [codeSwitch, setCodeSwitch] = useState(false);
   const [code, setCode] = useState('');
+  const [cursors, setCursors] = useState({});
+  const [mouse, updateMouse] = useState(false);
+  const [id, setSelfId] = useState(false);
 
   useEffect(() => {
     // Update mouse move
@@ -64,24 +81,40 @@ const HomePage = () => {
 
     // Handle another mouse movement
     socket.on("mousemove", data => {
-      const newCursors = {...cursors};
-      newCursors[data.id] = {
-        mx: data.mx,
-        my: data.my,
-        number: Object.keys(cursors).length + 1
+      if (data.id != id) {
+        const newCursors = {[data.id]: {
+          mx: data.mx,
+          my: data.my,
+          number: data.number
+        }}
+        number = number + 1
+        dispatch({type: 'add', payload: newCursors})
+        /*setCursors(prevState => ({
+          ...prevState,
+          'name': {
+            [data.id]: {
+              mx: data.mx,
+              my: data.my,
+              number: Object.keys(cursors).length + 1
+            },
+          }
+      }));*/
+        updateMouse(!mouse);
       }
-      console.log('mousemove');
-      console.log(cursors);
-      console.log(data.id);
-      cursors = newCursors;
-      console.log(newCursors);
     });
 
+    socket.on("connection", (id) => {
+      setSelfId(id);
+    })
+
     socket.on("disconnect", (id) => {
-      console.log('disconnect');
-      const newCursors = {...cursors};
+      console.log('disconnecting');
+      const newCursors = {...state.cursors};
       delete newCursors[id];
-      cursors = newCursors;
+      console.log(newCursors);
+      dispatch({type: 'update', payload: newCursors})
+      //setCursors(newCursors);
+      //updateMouse(!mouse);
     })
   }, []);
 
@@ -118,9 +151,11 @@ const HomePage = () => {
         <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="default.ho" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
       </Editor>
       {
-        Object.values(cursors).map((cursor) => {
+        Object.keys(state.cursors).map((cursorKey) => {
+          console.log(state.cursors);
+          const cursor = state.cursors[cursorKey];
           return (
-            <Cursor x={cursor.mx} y={cursor.my} number={cursor.number % 3}/>
+            <Cursor key={cursorKey} x={cursor.mx} y={cursor.my} number={cursor.number % 3} mouse={mouse}/>
           )
         })
       }
