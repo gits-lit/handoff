@@ -38,8 +38,9 @@ export const Text = ({ text, fontSize, textAlign }) => {
             500
           )
         }
+        id="wordWrap"
         tagName="p"
-        style={{ fontSize: `${fontSize}px`, textAlign }}
+        style={{  fontSize: `${fontSize}px`, textAlign }}
       />
     </div>
   );
