@@ -20,7 +20,7 @@ export const LandingPage = () => {
         <img src={logo} alt="logo" className="logo" />
         <div className="signs">
           <h3>Log In</h3>
-          <Button className="start">Meow</Button>
+          <Button className="start">Sign Up</Button>
         </div>
       </div>
       <div className="m-col">
