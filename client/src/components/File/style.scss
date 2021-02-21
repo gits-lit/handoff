@@ -3,8 +3,9 @@
     border-radius: 5px 5px 0px 0px;
     width: 296px;
     border: 2px solid black;
-    cursor: pointer;
-    margin: 2%;
+    cursor: url('../../assets/cursorbig.svg') pointer;
+    margin: 20px;
+    position: relative;
 
     .thumbnail {
         width: 100%;
@@ -19,6 +20,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
 
         #title {
             margin-left: 2%;
@@ -44,8 +48,8 @@
     width: 296px;
     height: 177px;
     border: 2px dashed black;
-    margin: 2%;
-    cursor: pointer;
+    margin: 20px;
+    cursor: url('../../assets/cursorbig.svg') pointer;
     justify-content: center;
     display: grid;
     place-items: center;

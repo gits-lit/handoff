@@ -18,7 +18,16 @@ import { RadioOption} from '../subcomponents/RadioOption';
 
 import './style.scss';
 
-const ENDPOINT = "http://127.0.0.1:3000";
+let ENDPOINT = "http://127.0.0.1:3000";
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  // dev code
+  ENDPOINT = "http://127.0.0.1:3000"
+} else {
+  // production code
+  ENDPOINT = "https://handoff-sc.herokuapp.com/" 
+}
+
+
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
@@ -100,8 +109,8 @@ const HomePage = () => {
           </Element>
         </Frame>
         {codeSwitch ? <CodeViewer html={code}/> : <Sidebar />}
-        <Header base64={baseString}/>
-        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
+        <Header base64={baseString} enabled={true}/>
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="default.ho" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

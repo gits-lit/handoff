@@ -19,10 +19,17 @@ body {
 }
 
 button {
-  cursor: url("./assets/cursor.svg"), pointer;
+  cursor: url("./assets/cursorbig.svg"), pointer !important;
+  &:hover {
+    outline: none !important;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  cursor: url("./assets/cursorbig.svg"), pointer;
 }
