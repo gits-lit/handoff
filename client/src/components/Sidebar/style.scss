@@ -15,8 +15,14 @@
       padding: 2vh 1vw;
       margin: 1vw;
       border: 1px dashed #000;
-      width: 100px;
-      height: 100px;
+      width: 75px;
+      height: 75px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
