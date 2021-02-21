@@ -12,6 +12,7 @@ import { Container } from '../subcomponents/Container';
 import { Text } from '../subcomponents/Text';
 import { Button } from '../subcomponents/Button';
 import { Image } from '../subcomponents/Image';
+import { InputField } from '../subcomponents/InputField';
 
 export const Sidebar = () => {
   const { connectors } = useEditor();
@@ -55,6 +56,13 @@ export const Sidebar = () => {
               Image<br />
               <PlusOutlined />
             </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <InputField text="Input" size="small" />)}
+              variant="contained"
+            >
+              Input Field<br />
+              <PlusOutlined />
+            </button>
           </div>
         );
       case 'form':
@@ -65,6 +73,13 @@ export const Sidebar = () => {
               variant="contained"
             >
               Container<br />
+              <PlusOutlined />
+            </button>
+            <button className="component-btn"
+              ref={(ref) => connectors.create(ref, <InputField text="Input" size="small" />)}
+              variant="contained"
+            >
+              Input Field<br />
               <PlusOutlined />
             </button>
           </div>

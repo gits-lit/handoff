@@ -12,6 +12,7 @@ import { Button } from '../subcomponents/Button';
 import { Container } from '../subcomponents/Container';
 import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
+import { InputField } from '../subcomponents/InputField';
 
 import './style.scss';
 
@@ -73,6 +74,7 @@ const HomePage = () => {
           Button,
           Container,
           Image,
+          InputField,
           Text,
         }}
       >
