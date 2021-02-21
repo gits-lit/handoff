@@ -9,7 +9,7 @@ import { Text } from '../subcomponents/Text';
 import { Button } from '../subcomponents/Button';
 import { Image } from '../subcomponents/Image';
 
-export const Topbar = () => {
+export const Sidebar = () => {
   const { connectors } = useEditor();
 
   return (

@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
 import socketIOClient from "socket.io-client";
 
-import {Topbar} from '../Topbar';
-import { StateSaver } from '../StateSaver';
+import {Sidebar} from '../Sidebar';
+import { Header } from '../Header';
 import Cursor from '../Cursor';
 
 import { Button } from '../subcomponents/Button';
@@ -86,8 +86,8 @@ const HomePage = () => {
             <Text fontSize={20} text="Drag components onto the canvas to build your site" />
           </Element>
         </Frame>
-        <Topbar />
-        <StateSaver socket={socket} />
+        <Sidebar />
+        <Header socket={socket} />
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

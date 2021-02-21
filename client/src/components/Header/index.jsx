@@ -4,7 +4,7 @@ import lz from 'lzutf8';
 
 let actions = {};
 
-export const StateSaver = (props) => {
+export const Header = (props) => {
   const [encodedString, setEncodedString ] = useState('');
 
   const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
