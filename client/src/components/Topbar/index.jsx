@@ -1,11 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useEditor } from '@craftjs/core';
 import lz from 'lzutf8';
+import { Switch } from 'antd';
+
+import teamicons from '../../assets/team-icons.png';
+import undo from '../../assets/undo.svg';
+import redo from '../../assets/redo.svg';
+
+import './style.scss';
 
 let actions = {};
 
-export const Header = (props) => {
+export const Topbar = (props) => {
   const [encodedString, setEncodedString ] = useState('');
+  const [checked, setChecked] = useState(true);
+
+  const onLock = () =>{
+    actions.setOptions((options) => (options.enabled = !checked));
+    setChecked(!checked);
+    props.socket.emit('lock', !checked);
+  }
 
   const { actions, query, enabled, canUndo, canRedo, selectedNodeId } = useEditor(
     (state, query) => {
@@ -35,10 +49,20 @@ export const Header = (props) => {
         actions.deserialize(json);
       }
     });
+
+    props.socket.on('lock', data => {
+      setChecked(data);
+    })
   }, [])
 
   return (
-    <>
-    </>
+    <div className="top-bar">
+      <img className={canUndo ? 'mark' : 'mark disabled'} src={undo} onClick={() => actions.history.undo()}/>
+      <img className={canRedo ? 'mark' : 'mark disabled'} src={redo} onClick={() => actions.history.redo()}/>
+      <img className='team' src={teamicons}/>
+      <span>Lock Editing</span>
+      <span className="centered">{props.name}</span>
+      <Switch defaultChecked onChange={onLock} checked={checked} />
+    </div>
   )
 }

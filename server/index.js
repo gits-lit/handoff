@@ -54,6 +54,11 @@ io.on('connection', client => {
             listOfClients[id] = '';
         }
     });
+
+    client.on('lock', data => {
+        client.broadcast.emit('lock', data);
+    });
+
     client.on('disconnect', () => {
         delete listOfClients[id];
         client.broadcast.emit('disconnected', id)

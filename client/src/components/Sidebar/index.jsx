@@ -13,7 +13,7 @@ export const Sidebar = () => {
   const { connectors } = useEditor();
 
   return (
-    <div className="top-bar">
+    <div className="side-bar">
       <button
         ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
         variant="contained"

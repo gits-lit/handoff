@@ -3,7 +3,7 @@ import { Editor, Frame, Element } from '@craftjs/core';
 import socketIOClient from "socket.io-client";
 
 import {Sidebar} from '../Sidebar';
-import { Header } from '../Header';
+import { Topbar } from '../Topbar';
 import Cursor from '../Cursor';
 
 import { Button } from '../subcomponents/Button';
@@ -77,17 +77,18 @@ const HomePage = () => {
           <Element
             canvas
             is={Container}
-            width="40%"
-            minHeight="800px"
-            padding={['40', '40', '40', '40']}
+            width="60vw"
+            position="absolute"
+            right='5%'
+            bottom='0'
+            minHeight="calc(100vh - 150px)"
+            padding={0}
             background="rgba(255, 255, 255, 1)"
-
             >
-            <Text fontSize={20} text="Drag components onto the canvas to build your site" />
           </Element>
         </Frame>
         <Sidebar />
-        <Header socket={socket} />
+        <Topbar name="HackSC2021 Demo" socket={socket} />
       </Editor>
       {
         Object.values(cursors).map((cursor) => {
