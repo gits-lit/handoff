@@ -100,8 +100,8 @@ const HomePage = () => {
           </Element>
         </Frame>
         {codeSwitch ? <CodeViewer html={code}/> : <Sidebar />}
-        <Header base64={baseString}/>
-        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
+        <Header base64={baseString} enabled={true}/>
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="default.ho" socket={socket} setCodeSwitch={setCodeSwitch} setCode={setCode}/>
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

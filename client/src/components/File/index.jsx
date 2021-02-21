@@ -16,7 +16,6 @@ const File = (props) => {
                 <div id="title">
                     {props.name}
                 </div>
-                
                 <div id="date">
                     {props.date}
                 </div>

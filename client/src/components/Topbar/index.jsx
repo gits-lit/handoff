@@ -41,10 +41,12 @@ function format(node, level) {
 
 
 export const Topbar = (props) => {
+
   const [encodedString, setEncodedString] = useState('');
   const [checked, setChecked] = useState(true);
   const [view, setView] = useState(true);
   const [name, setName] = useState(props.name);
+  const [id, setId] = useState('');
 
   const onLock = () => {
     actions.setOptions((options) => (options.enabled = !checked));
@@ -84,6 +86,7 @@ export const Topbar = (props) => {
   });
 
   useEffect(() => {
+
     props.socket.on("edit-back", data => {
       console.log('edited');
       if (data != encodedString) {

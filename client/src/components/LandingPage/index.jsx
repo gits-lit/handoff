@@ -1,4 +1,6 @@
 import { Button, Input } from 'antd';
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import './style.scss';
 
@@ -13,15 +15,20 @@ import revol from '../../assets/revol.svg';
 const { Search } = Input;
 
 export const LandingPage = () => {
-  const onSearch = (value) => console.log(value);
+  let history = useHistory();
+  const onSearch = (value) => history.push('/viewFiles');
 
   return (
     <div className="LandingPage">
       <div className="nav">
         <img src={logo} alt="logo" className="logo" />
         <div className="signs">
-          <h3>Log In</h3>
-          <Button className="start">Sign Up</Button>
+          <Link to="/viewFiles">
+            <h3>Log In</h3>
+          </Link>
+          <Link to="/viewFiles">
+            <Button className="start">Sign Up</Button>
+          </Link>
         </div>
       </div>
       <div className="m-col">
