@@ -1,5 +1,6 @@
 import { useEditor, Element } from '@craftjs/core';
 import React from 'react';
+import { PlusOutlined } from '@ant-design/icons';
 
 import './style.scss';
 
@@ -14,29 +15,33 @@ export const Sidebar = () => {
 
   return (
     <div className="top-bar">
-      <button
+      <button className="component-btn"
         ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
         variant="contained"
       >
-        Text
+        Text<br />
+        <PlusOutlined />
       </button>
-      <button
+      <button className="component-btn"
         ref={(ref) => connectors.create(ref, <Button text="Click me" size="small" />)}
         variant="contained"
       >
-        Button
+        Button<br />
+        <PlusOutlined />
       </button>
-      <button
+      <button className="component-btn"
         ref={(ref) => connectors.create(ref, <Element canvas is={Container} padding={20} />)}
         variant="contained"
       >
-        Container
+        Container<br />
+        <PlusOutlined />
       </button>
-      <button
+      <button className="component-btn"
         ref={(ref) => connectors.create(ref, <Image />)}
         variant="contained"
       >
-        Image
+        Image<br />
+        <PlusOutlined />
       </button>
     </div>
   );
