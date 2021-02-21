@@ -18,6 +18,11 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+textArea {
+  position: fixed;
+  top: 0;
+}
+
 button {
   cursor: url("./assets/cursorbig.svg"), pointer !important;
   &:hover {

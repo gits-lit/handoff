@@ -11,7 +11,7 @@ import {
 const openNotification = () => {
   notification.info({
     message: 'Copied url!',
-    placement: 'bottom',
+    placement: 'bottomRight',
   });
 };
 
