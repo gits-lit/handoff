@@ -11,13 +11,15 @@ import { Container } from '../subcomponents/Container';
 import { Image } from '../subcomponents/Image';
 import { Text } from '../subcomponents/Text';
 
+import './style.scss';
+
 const ENDPOINT = "http://127.0.0.1:3000";
 const socket = socketIOClient(ENDPOINT);
 
 let prevMouseX, prevMouseY, x, y;
 
 const HomePage = () => {
-  const [cursors, setCursors] = useState({}); 
+  const [cursors, setCursors] = useState({});
 
   useEffect(() => {
     // Update mouse move
@@ -62,7 +64,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="handoff-container">
       <Editor
         resolver={{
           Button,
@@ -79,6 +81,7 @@ const HomePage = () => {
             minHeight="800px"
             padding={['40', '40', '40', '40']}
             background="rgba(255, 255, 255, 1)"
+
             >
             <Text fontSize={20} text="Hi world!" />
           </Element>
@@ -91,7 +94,7 @@ const HomePage = () => {
           return (
             <Cursor x={cursor.mx} y={cursor.my} number={cursor.number % 3}/>
           )
-        }) 
+        })
       }
     </div>
   );
