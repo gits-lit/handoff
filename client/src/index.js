@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.scss';
 
 import HomePage from './components/HomePage';
+import DeployPage from './components/DeployPage';
 import LandingPage from './components/LandingPage'
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          <Route exact path="/l">
+            <DeployPage />
+          </Route>
           <Route path="/app">
             <HomePage />
           </Route>
