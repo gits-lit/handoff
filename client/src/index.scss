@@ -19,7 +19,10 @@ body {
 }
 
 button {
-  cursor: url('./assets/cursor.svg'), pointer;
+  cursor: url("./assets/cursorbig.svg"), pointer !important;
+  &:hover {
+    outline: none !important;
+  }
 }
 
 code {
@@ -39,4 +42,7 @@ code {
   .MuiFormLabel-root {
     margin-bottom: 0px;
   }
+}
+a {
+  cursor: url("./assets/cursorbig.svg"), pointer;
 }
