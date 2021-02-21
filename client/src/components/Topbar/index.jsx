@@ -14,6 +14,7 @@ let actions = {};
 export const Topbar = (props) => {
   const [encodedString, setEncodedString ] = useState('');
   const [checked, setChecked] = useState(true);
+  const [name, setName] = useState(props.name);
 
   const onLock = () =>{
     actions.setOptions((options) => (options.enabled = !checked));
@@ -61,7 +62,9 @@ export const Topbar = (props) => {
       <img className={canRedo ? 'mark' : 'mark disabled'} src={redo} onClick={() => actions.history.redo()}/>
       <img className='team' src={teamicons}/>
       <span>Lock Editing</span>
-      <span className="centered">{props.name}</span>
+      <input className="centered" onChange={(e) => {
+        setName(e.target.value);
+      }} value={name}/>
       <Switch defaultChecked onChange={onLock} checked={checked} />
     </div>
   )

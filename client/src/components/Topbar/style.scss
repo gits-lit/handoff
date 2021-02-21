@@ -20,9 +20,18 @@
 
   .centered {
     position: absolute;
-    left: 0;
-    width: 100%;
+    margin: auto;
     text-align: center;
+    width: 100%;
+    background-color: #333333;
+    border: none;
+    z-index: -1;
+    color: white;
+    font-size: 20px;
+    &:focus {
+      outline: none
+    }
+
   }
 
   .ant-switch {
@@ -40,7 +49,7 @@
 
   .mark {
     cursor: url('../../assets/cursorbig.svg'), pointer;
-    margin: 0 10px 4px 15px;
+    margin: 0 10px 4px 20px;
     z-index: 5;
     transition: 0.2s;
 

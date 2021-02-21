@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
 import socketIOClient from "socket.io-client";
 
+import Header from '../Header';
 import {Sidebar} from '../Sidebar';
 import { Topbar } from '../Topbar';
 import Cursor from '../Cursor';
@@ -88,6 +89,7 @@ const HomePage = () => {
           </Element>
         </Frame>
         <Sidebar />
+        <Header />
         <Topbar name="HackSC2021 Demo" socket={socket} />
       </Editor>
       {
