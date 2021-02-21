@@ -41,16 +41,16 @@ function format(node, level) {
 
 
 export const Topbar = (props) => {
-  const [encodedString, setEncodedString ] = useState('');
+  const [encodedString, setEncodedString] = useState('');
   const [checked, setChecked] = useState(true);
   const [view, setView] = useState(true);
   const [name, setName] = useState(props.name);
 
-  const onLock = () =>{
+  const onLock = () => {
     actions.setOptions((options) => (options.enabled = !checked));
     setChecked(!checked);
     props.socket.emit('lock', !checked);
-  }
+  };
 
   const onView = () => {
     var d = document.getElementById("main-canvas");
@@ -73,16 +73,16 @@ export const Topbar = (props) => {
         }
         setEncodedString(newEncodedString);
       }
-      
-      return ({
-        selectedNodeId: state.events.selected,
-        enabled: state.options.enabled,
-        canUndo: query.history.canUndo(),
-        canRedo: query.history.canRedo(),
-      });
-    }
-  );
-  
+      setEncodedString(newEncodedString);
+
+    return {
+      selectedNodeId: state.events.selected,
+      enabled: state.options.enabled,
+      canUndo: query.history.canUndo(),
+      canRedo: query.history.canRedo(),
+    };
+  });
+
   useEffect(() => {
     props.socket.on("edit-back", data => {
       props.updateBase64(data);
@@ -92,10 +92,10 @@ export const Topbar = (props) => {
       }
     });
 
-    props.socket.on('lock', data => {
+    props.socket.on('lock', (data) => {
       setChecked(data);
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div className="top-bar">
@@ -110,5 +110,5 @@ export const Topbar = (props) => {
         setName(e.target.value);
       }} value={name}/>
     </div>
-  )
-}
+  );
+};

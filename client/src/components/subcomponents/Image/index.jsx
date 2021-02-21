@@ -1,4 +1,9 @@
 import { useNode } from '@craftjs/core';
+import {
+    FormControl,
+    FormLabel,
+    TextField,
+} from '@material-ui/core';
 import React from 'react';
 
 export const Image = ({ imageLink }) => {
@@ -23,10 +28,20 @@ export const Image = ({ imageLink }) => {
 };
 
 export const ImageSettings = () => {
+    const {
+        actions: { setProp },
+        props
+    } = useNode((node) => ({
+        props: node.data.props
+    }));
+
     return(
-        <React.Fragment>
-            <p>placeholder setting</p>
-        </React.Fragment>
+        <div>
+            <FormControl size="small" component="fieldset">
+                <FormLabel component="legend">Image Link</FormLabel>
+                <TextField onChange={(e) => setProp((props) => (props.imageLink = e.target.value))}/>
+            </FormControl>
+        </div>
     );
 };
 

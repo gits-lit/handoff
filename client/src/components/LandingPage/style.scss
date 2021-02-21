@@ -19,7 +19,7 @@ body {
       border-color: black;
 
       .ant-input {
-          height: 60px;
+        height: 60px;
       }
 
       .ant-input-search-button {
@@ -32,7 +32,6 @@ body {
         border-top: 0px black solid;
         border-left: 2px black solid;
       }
-
     }
 
     .searchinput {
@@ -48,25 +47,24 @@ body {
   .signs {
     display: flex;
 
-
     h3 {
-        display: flex;
-        align-items: center;
-        font-size: 22px;
-        margin-right: 36px;
-        margin-top: 10px;
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      margin-right: 36px;
+      margin-top: 10px;
     }
 
     .start {
-        width: 135px;
-        height: 50px;
-        font-size: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        background-color: #333;
-        color: white;
+      width: 135px;
+      height: 50px;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background-color: #333;
+      color: white;
     }
   }
 
@@ -117,9 +115,26 @@ body {
     z-index: -2;
   }
 
+  .trimg2 {
+    position: absolute;
+    bottom: 30%;
+    right: 5%;
+    animation: action 3s infinite alternate;
+    z-index: -2;
+  }
+
   .tlimg {
     position: absolute;
     top: 20%;
     left: 0;
+    animation: action 3s infinite alternate;
+  }
+  @keyframes action {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translate(-15px, 30px);
+    }
   }
 }
