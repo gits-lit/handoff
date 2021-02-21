@@ -6,6 +6,7 @@ import './index.scss';
 
 import HomePage from './components/HomePage';
 import DeployPage from './components/DeployPage';
+import LandingPage from './components/LandingPage'
 
 function App() {
   return (
@@ -15,11 +16,13 @@ function App() {
           <Route exact path="/l">
             <DeployPage />
           </Route>
-          <Route exact path="/">
+          <Route path="/app">
             <HomePage />
           </Route>
+          <Route path="/">
+            <LandingPage />
+          </Route>
         </Switch>
-
       </div>
     </Router>
   );
