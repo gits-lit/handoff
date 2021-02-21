@@ -21,6 +21,7 @@ let prevMouseX, prevMouseY, x, y;
 
 const HomePage = () => {
   const [cursors, setCursors] = useState({});
+  const [baseString, updateBase] = useState('');
 
   useEffect(() => {
     // Update mouse move
@@ -85,12 +86,13 @@ const HomePage = () => {
             minHeight="calc(100vh - 150px)"
             padding={0}
             background="rgba(255, 255, 255, 1)"
+            id="main-canvas"
             >
           </Element>
         </Frame>
         <Sidebar />
-        <Header />
-        <Topbar name="HackSC2021 Demo" socket={socket} />
+        <Header base64={baseString}/>
+        <Topbar updateBase64={(baseString) => {updateBase(baseString)}}name="HackSC2021 Demo" socket={socket} />
       </Editor>
       {
         Object.values(cursors).map((cursor) => {

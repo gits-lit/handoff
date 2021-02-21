@@ -5,14 +5,17 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.scss';
 
 import HomePage from './components/HomePage';
+import DeployPage from './components/DeployPage';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-
-          <Route path="/">
+          <Route exact path="/l">
+            <DeployPage />
+          </Route>
+          <Route exact path="/">
             <HomePage />
           </Route>
         </Switch>

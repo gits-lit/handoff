@@ -4,13 +4,14 @@ import { Paper, FormControl, FormLabel } from '@material-ui/core';
 import ColorPicker from 'material-ui-color-picker';
 import React from 'react';
 
-export const Container = ({ background, width, minHeight, padding, children, bottom, right, position }) => {
+export const Container = ({ background, width, minHeight, padding, children, bottom, right, position, id }) => {
   const {
     connectors: { connect, drag },
   } = useNode();
   return (
     <Paper
       ref={(ref) => connect(drag(ref))}
+      id={id}
       style={{ margin: '5px 0', background, bottom, right, padding: `${padding}px`, position, minHeight, width }}
       elevation={3}
     >

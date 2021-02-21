@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 import './style.scss';
 import logo from '../../assets/logo.png';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className = "header">
       <img className="logo" src={logo} />
@@ -12,9 +14,13 @@ const Header = () => {
         <div className="link">
           Copy Link
         </div>
-        <div className="deploy">
-          Deploy
-        </div>
+        <Link to={{
+          pathname: "/l",
+          search: `${props.base64}`}}s>
+          <div className="deploy">
+            Deploy
+          </div>
+        </Link>
       </div>
     </div>
   )

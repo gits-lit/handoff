@@ -29,6 +29,7 @@ export const Topbar = (props) => {
       if (encodedString != newEncodedString) {
         if(encodedString != '') {
           props.socket.emit('edit', newEncodedString);
+          props.updateBase64(newEncodedString);
         }
         setEncodedString(newEncodedString);
       }
@@ -48,6 +49,7 @@ export const Topbar = (props) => {
       const json = lz.decompress(lz.decodeBase64(data));
       if (Object.keys(json).length > 2) {
         actions.deserialize(json);
+        props.updateBase64(json);
       }
     });
 
