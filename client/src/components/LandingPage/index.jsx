@@ -25,7 +25,7 @@ export const LandingPage = () => {
       </div>
       <div className="m-col">
         <img src={revol} alt="m-img" className="mimg" />
-        <h2>A no-code platform for collabarative</h2>
+        <h2>A no-code platform for collaborative</h2>
         <h2>web development</h2>
         <div className="search">
           <Search
