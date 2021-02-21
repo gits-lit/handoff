@@ -32,26 +32,6 @@ export const Sidebar = () => {
           <div className="components-menu">
             <button
               className="component-btn"
-              ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
-              variant="contained"
-            >
-              Text
-              <br />
-              <PlusOutlined />
-            </button>
-            <button
-              className="component-btn"
-              ref={(ref) =>
-                connectors.create(ref, <Button text="Click me" size="small" />)
-              }
-              variant="contained"
-            >
-              Button
-              <br />
-              <PlusOutlined />
-            </button>
-            <button
-              className="component-btn"
               ref={(ref) =>
                 connectors.create(
                   ref,
@@ -61,15 +41,6 @@ export const Sidebar = () => {
               variant="contained"
             >
               Container
-              <br />
-              <PlusOutlined />
-            </button>
-            <button
-              className="component-btn"
-              ref={(ref) => connectors.create(ref, <Image />)}
-              variant="contained"
-            >
-              Image
               <br />
               <PlusOutlined />
             </button>
@@ -92,6 +63,35 @@ export const Sidebar = () => {
               variant="contained"
             >
               Radio<br />
+              <PlusOutlined />
+            </button>
+            <button
+              className="component-btn"
+              ref={(ref) => connectors.create(ref, <Text text="Edit text" />)}
+              variant="contained"
+            >
+              Text
+              <br />
+              <PlusOutlined />
+            </button>
+            <button
+              className="component-btn"
+              ref={(ref) =>
+                connectors.create(ref, <Button text="Click me" size="small" />)
+              }
+              variant="contained"
+            >
+              Button
+              <br />
+              <PlusOutlined />
+            </button>
+            <button
+              className="component-btn"
+              ref={(ref) => connectors.create(ref, <Image />)}
+              variant="contained"
+            >
+              Image
+              <br />
               <PlusOutlined />
             </button>
           </div>
@@ -161,7 +161,7 @@ export const Sidebar = () => {
     <div className="side-bar">
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
         <Menu.Item key="general" icon={<CopyOutlined />}>
-          General
+          All
         </Menu.Item>
         <Menu.Item key="form" icon={<FormOutlined />}>
           Form
